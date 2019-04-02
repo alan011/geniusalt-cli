@@ -6,7 +6,7 @@ class Add(Handler):
         if not (self.nodes or self.modules or self.instances or self.clusters):
             raise ArgError("ERROR: Add command requires an object name, which can be specified with option '-n, -m, -i or -c'.")
         if (self.nodes and self.modules) or (self.nodes and self.instances):
-            self.error("ERROR: Option '-n' cannot be used with '-m' or '-i' when to add an object.")
+            raise ArgError("ERROR: Option '-n' cannot be used with '-m' or '-i' when to add an object.")
 
         if self.nodes:
             for name in self.nodes:
